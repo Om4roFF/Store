@@ -1,0 +1,41 @@
+{% extends 'mainPage.html' %}
+{% block head %}
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'admin/css/contacts.css' %}">
+{% endblock %}
+{% block news %}
+    <div class="map">
+        <div class="map1">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2906.7786904652303!2d76.90
+            76955154458!3d43.23509947913784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3883692f02
+            7581ad%3A0x2426740f56437e63!2z0JzQtdC20LTRg9C90LDRgNC-0LTQvdGL0Lkg0YPQvdC40LLQtdGA0YHQuNGC0LXR
+            giDQuNC90YTQvtGA0LzQsNGG0LjQvtC90L3Ri9GFINGC0LXRhdC90L7Qu9C-0LPQuNC5!5e0!3m2!1sru!2skz!4v1573
+            76172925!5m2!1sru!2skz" width="800" height="450" frameborder="0" style="border:0;"
+            allowfullscreen=""></iframe>
+        </div>
+    </div>
+    <div class="form">
+        <div>
+            <form action="{% url 'contacts:leave_feedback' %}" method="post">
+                {% csrf_token %}
+                <div class="names">
+                    <label>Firstname <input class="names" type="text" name="firstname"></label>
+                    <label>Lastname <input class="names" type="text" name="lastname"></label>
+                </div>
+                <div class="contacts">
+                    <label>Email <input class="contacts" type="text" name="email"></label>
+                    <label>Phone <input class="contacts" type="number" name="contacts"></label>
+                </div>
+                <div class="comments">
+                    <p style="color: black">Comment</p>
+                    <textarea name="text"></textarea>
+                </div>
+
+                <div class="submit">
+                    <input class="submit btn-danger" type="submit">
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+                    

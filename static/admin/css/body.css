@@ -1,0 +1,45 @@
+div.body
+{
+    height: 1000px;
+    width: 100%;
+    background-image: url("/static/admin/img/bg.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    background-position: center center;
+    background-attachment: fixed;
+
+}
+
+
+div.forChoose
+{
+    border: 3px double gray;
+    border-radius: 25px;
+    height: 45px;
+    width:150px;
+    margin-top: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 24px;
+}
+
+div.forChoose:hover
+{
+    border: 4px double gray;
+}
+
+
+a.choose
+{
+    size: 24px;
+    color:black;
+    text-decoration: none;
+}
+
+a.choose:hover
+{
+   color: white;
+}

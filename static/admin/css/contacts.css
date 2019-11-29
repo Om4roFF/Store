@@ -1,0 +1,95 @@
+div.body
+{
+    background-color: white;
+    height: 1000px;
+    width: 100%;
+    background-image: url("/static/admin/img/bgC.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+div.map
+{
+    justify-content: center;
+    display: flex ;
+}
+
+div.map1
+{
+
+    width: 800px;
+    height: 450px;
+    margin-top: 100px;   
+}
+
+div.form
+{
+    justify-content: center;
+    display: flex ;
+    margin-top: 50px;
+}
+
+div.form1 
+{
+  
+    width: 800px;
+    height: 150px;
+    display: flex;
+    background-color: #F3EDEC;
+    padding: 10px;
+    justify-content: space-between;
+    
+}
+
+form
+{
+    width: 800px;
+    height: 150px;
+    display: flex;
+    background-color: #F3EDEC;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+
+.submit
+{
+    height: 50px;
+    width: 100px;
+    border-radius: 25px;
+    
+}
+
+div.names 
+{
+    
+}
+
+div.submit{
+    float: right;
+    margin-top: 42px;
+}
+
+div.contacts
+{
+
+}
+
+div.comments
+{
+
+}
+
+
+.contacts
+{
+    height: 25px;
+    width: 150px;
+}
+
+.names
+{
+    
+    height: 25px;
+    width: 150px;
+}

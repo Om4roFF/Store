@@ -1,0 +1,56 @@
+div.body
+{
+    height: 1000px;
+    width: 100%;
+    background-image: url("/static/img/bgN.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color:white;
+}
+
+div.for-news
+{
+    padding-top:100px;
+    height: 900px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 32%;
+    
+}
+
+
+
+div.new-1
+{
+    background-color: #F3EDEC;
+    height: 1000px;
+    width: 500px;
+}
+
+
+div.new-2
+{
+    background-color: #F3EDEC;
+    height: 200px;
+    width: 500px;
+}
+
+
+img.news-img-1
+{
+    height: 199px;
+    width: 199px;
+    float: left;
+
+}
+
+
+img.news-img-2
+{
+    height: 199px;
+    width: 199px;
+    float: right;
+
+}

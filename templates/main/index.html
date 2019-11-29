@@ -1,0 +1,276 @@
+{% extends 'mainPage.html' %}
+{% block title %}Cars{% endblock %}
+{% block head %}
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'admin/css/slide.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/css/body1.css' %}">
+    <script src="{% static 'admin/js/script.js' %}"></script>
+{% endblock %}
+{% block body %}
+    <body>
+        <header>
+            <nav>
+                <div class="logo">
+                   
+                </div>
+                <ul class="main-nav">
+                    <li><a href="/" class="nav-li">Cars</a></li>
+                    <li><a href="/news" class="nav-li">News</a></li>
+                    <li><a href="/testdrive" class="nav-li">Test-drives</a></li>
+                    <li><a href="/contacts"  class="nav-li">Contacts</a></li>
+                </ul>
+                
+            </nav>
+        </header>
+        <div class="body">
+            <h2>Марки машин</h2>
+            <div class="ul-types">
+                <ul class="cars-types">
+                    <li><h4><a href="#bmw">BMW</a></h4></li>
+                    <li><h4><a href="#merc">Mercedes-Benz</a></h4></li>
+                    <li><h4><a href="#tesla">Tesla</a></h4></li>
+                    <li><h4><a href="#toyta">Toyota</a></h4></li>
+                    <li><h4><a href="#lexus">Lexus</a></h4></li>
+                </ul>
+            </div>
+
+
+           
+           
+            
+            <div class="slideshow-container">
+            
+            <div class="mySlides fade">
+              
+              <img src="{% static 'admin/img/bgTD.jpg' %}" style="width:100%">
+              
+            </div>
+            
+            <div class="mySlides fade">
+              
+              <img src="{% static 'admin/img/merc.jpg' %}" style="width:100%">
+              
+            </div>
+            
+            <div class="mySlides fade">
+              
+              <img src="{% static 'admin/img/tesla.jpg' %}" style="width:100%">
+              
+            </div>
+
+            <div class="mySlides fade">
+                
+                <img src="{% static 'admin/img/toyta.jpg' %}" style="width:100%">
+               
+            </div>
+
+            <div class="mySlides fade">
+                
+                <img src="{% static 'admin/img/lexus.jpg' %}" style="width:100%">
+                
+              </div>
+
+             
+            </div>
+
+            <br>
+            
+            <div style="text-align:center">
+              <span class="dot"></span> 
+              <span class="dot"></span> 
+              <span class="dot"></span>
+              <span class="dot"></span> 
+              <span class="dot"></span>
+            </div>
+        
+        </div>
+        <script>
+            var slideIndex = 0;
+            showSlides();
+
+            function plusSlides(n) {
+                 showSlides(slideIndex += n);
+            }
+
+            function currentSlide(n) {
+                 showSlides(slideIndex = n);
+            }
+            
+            function showSlides() {
+              var i;
+              var slides = document.getElementsByClassName("mySlides");
+              var dots = document.getElementsByClassName("dot");
+              for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+              }
+              slideIndex++;
+              if (slideIndex > slides.length) {slideIndex = 1}    
+              for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+              }
+              slides[slideIndex-1].style.display = "block";  
+              dots[slideIndex-1].className += " active";
+              setTimeout(showSlides, 1500); // Change image every 2 seconds
+            }
+            </script>
+        <div class="bmw">
+            <a name="bmw"></a>
+            <div class="forModels">
+                <div class="model">
+                    <img src="{% static 'admin/img/bmwBag.jpg' %}">
+                    <p>Описание к машине</p>
+                    <a href="#">Записаться на тест драйв</a>
+                </div>
+                <div class="model">
+                    <img src="{% static 'admin/img/bmwBag.jpg' %}">
+                    <p>Описание к машине</p>
+                    <a href="#">Записаться на тест драйв</a>
+                </div>
+                <div class="model">
+                    <img src="{% static 'admin/img/bmwBag.jpg' %}">
+                    <p>Описание к машине</p>
+                    <a href="#">Записаться на тест драйв</a>
+                </div>
+                <div class="model">
+                    <img src="{% static 'admin/img/bmwBag.jpg' %}">
+                    <p>Описание к машине</p>
+                    <a href="#">Записаться на тест драйв</a>
+                </div>
+                <div class="model">
+                    <img src="{% static 'admin/img/bmwBag.jpg' %}">
+                    <p>Описание к машине</p>
+                    <a href="#">Записаться на тест драйв</a>
+                </div>
+            </div>
+        </div>
+        <div class="merc">
+            <a name="merc"></a>
+            <div class="forModels">
+                <div class="model">
+                    <img src="{% static 'admin/img/mercBag.jpg' %}">
+                    <p>Описание к машине</p>
+                    <a href="#">Записаться на тест драйв</a>
+                </div>
+                <div class="model">
+                    <img src="{% static 'admin/img/mercBag.jpg' %}">
+                    <p>Описание к машине</p>
+                    <a href="#">Записаться на тест драйв</a>
+                </div>
+                <div class="model">
+                    <img src="{% static 'admin/img/mercBag.jpg' %}">
+                    <p>Описание к машине</p>
+                    <a href="#">Записаться на тест драйв</a>
+                </div>
+                <div class="model">
+                    <img src="{% static 'admin/img/mercBag.jpg' %}">
+                    <p>Описание к машине</p>
+                    <a href="#">Записаться на тест драйв</a>
+                </div>
+                <div class="model">
+                    <img src="{% static 'admin/img/mercBag.jpg' %}">
+                    <p>Описание к машине</p>
+                    <a href="#">Записаться на тест драйв</a>
+                </div>
+            </div>
+        </div>
+        <div class="tesla">
+            <a name="tesla"></a>
+            <div class="forModels">
+                <div class="model">
+                    <img src="mercBag.jpg">
+                    <p>Описание к машине</p>
+                    <a href="#">Записаться на тест драйв</a>
+                </div>
+                <div class="model">
+                    <img src="mercBag.jpg">
+                    <p>Описание к машине</p>
+                    <a href="#">Записаться на тест драйв</a>
+                </div>
+                <div class="model">
+                    <img src="mercBag.jpg">
+                    <p>Описание к машине</p>
+                    <a href="#">Записаться на тест драйв</a>
+                </div>
+                <div class="model">
+                    <img src="mercBag.jpg">
+                    <p>Описание к машине</p>
+                    <a href="#">Записаться на тест драйв</a>
+                </div>
+                <div class="model">
+                    <img src="mercBag.jpg">
+                    <p>Описание к машине</p>
+                    <a href="#">Записаться на тест драйв</a>
+                </div>
+            </div>
+        </div>
+        <div class="toyota">
+            <a name="toyta"></a>
+            <div class="forModels">
+                <div class="model">
+                    <img src="mercBag.jpg">
+                    <p>Описание к машине</p>
+                    <a href="#">Записаться на тест драйв</a>
+                </div>
+                <div class="model">
+                    <img src="mercBag.jpg">
+                    <p>Описание к машине</p>
+                    <a href="#">Записаться на тест драйв</a>
+                </div>
+                <div class="model">
+                    <img src="mercBag.jpg">
+                    <p>Описание к машине</p>
+                    <a href="#">Записаться на тест драйв</a>
+                </div>
+                <div class="model">
+                    <img src="mercBag.jpg">
+                    <p>Описание к машине</p>
+                    <a href="#">Записаться на тест драйв</a>
+                </div>
+                <div class="model">
+                    <img src="mercBag.jpg">
+                    <p>Описание к машине</p>
+                    <a href="#">Записаться на тест драйв</a>
+                </div>
+            </div>
+        </div>
+        <div class="lexus">
+            <a name="lexus"></a>
+            <div class="forModels">
+                <div class="model">
+                    <img src="mercBag.jpg">
+                    <p>Описание к машине</p>
+                    <a href="#">Записаться на тест драйв</a>
+                </div>
+                <div class="model">
+                    <img src="mercBag.jpg">
+                    <p>Описание к машине</p>
+                    <a href="#">Записаться на тест драйв</a>
+                </div>
+                <div class="model">
+                    <img src="mercBag.jpg">
+                    <p>Описание к машине</p>
+                    <a href="#">Записаться на тест драйв</a>
+                </div>
+                <div class="model">
+                    <img src="mercBag.jpg">
+                    <p>Описание к машине</p>
+                    <a href="#">Записаться на тест драйв</a>
+                </div>
+                <div class="model">
+                    <img src="mercBag.jpg">
+                    <p>Описание к машине</p>
+                    <a href="#">Записаться на тест драйв</a>
+                </div>
+            </div> 
+        </div>
+        <footer>
+            <div class="nav-foot">
+                <ul class="nav-foot-ul">
+                    <li><a class="footer-a" href="#">About us</a></li>
+                    <li><a class="footer-a" href="#">Our partners</a></li>
+                    <li><a class="footer-a" href="#">Locations</a></li> 
+                </ul>
+            </div>
+        </footer>
+    </body>
+{% endblock %}

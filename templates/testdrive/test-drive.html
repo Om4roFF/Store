@@ -1,0 +1,39 @@
+{% extends 'mainPage.html' %}
+{% block title %}Тест драйв{% endblock %}
+{% block head %}
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'admin/css/test-drive.css' %}">
+{% endblock %}
+
+{% block news %}
+            <div class="map">
+               <div class="car-row">
+                
+            </div>
+           </div>
+           <div class="form">
+                <div class="form1">
+                    
+                    <div class="names">
+                        <label>Firstname <input class="names" type="text" name="firsname"></label>
+                        <label>Lastname <input class="names" type="text" name="firsname"></label>
+                    </div>
+                    
+                    <div class="contacts">
+                        <label>Email <input class="contacts" type="text" name="firsname"></label>
+                        <label>Phone <input class="contacts" type="number" name="firsname"></label>
+                    </div>
+                   
+                    
+                    <div class="names">
+                        <label>Date<input class="contacts" type="date"></label>
+                    </div>
+
+                    <div class="submit">
+                        <input class="submit btn-danger" type="submit">
+                    </div>
+                    
+
+                </div>
+           </div>
+{% endblock %}

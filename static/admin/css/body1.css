@@ -1,0 +1,130 @@
+div.body
+{
+    height: 800px;
+    width: 100%;
+    background-image: url("/static/admin/img/bg.jpg");
+    background-size: cover;
+   
+    background-position: 100% 100%;
+    
+}
+
+div.bmw
+{
+    height: 800px;
+    width: 100%;
+    background-size: cover;
+    background-image: url("/static/admin/img/bmwBag.jpg");
+    background-position: 100% 100%;
+}
+
+div.merc
+{
+    height: 800px;
+    width: 100%;
+    background-size: cover;
+    background-image: url("/static/admin/img/mercBag.jpg");
+    background-position: 100% 100%;
+}
+
+
+
+div.tesla
+{
+    height: 800px;
+    width: 100%;
+    background-size: cover;
+    background-image: url("/static/admin/img/teslaBag.jpg");
+    background-position: 100% 100%;
+}
+
+div.toyota
+{
+    height: 800px;
+    width: 100%;
+    background-size: cover;
+    background-image: url("/static/admin/img/toyotaBag.jpg");
+    background-position: 100% 100%;
+}
+
+div.lexus
+{
+    height: 800px;
+    width: 100%;
+    background-size: cover;
+    background-image: url("/static/admin/img/lexusbag.jpg");
+    background-position: 100% 100%;
+}
+
+h2
+{
+    font-family: Verdana, sans-serif;
+    padding-top: 70px;
+    text-align: center;
+}
+
+div.ul-types
+{
+    padding-top: 50px;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+ul.cars-types li 
+{
+    list-style-type: none;
+    float: left;
+    padding-left: 40px;
+}
+
+ul.cars-types li *
+{
+    text-decoration: none;
+    color: black;
+    font-family:double;
+}
+
+
+ul.cars-types li * :hover
+{
+    font-weight: bold;
+}
+
+div.forModels
+{
+  display: flex;
+  padding-top: 20px;
+  justify-content: space-around;
+}
+
+p{
+  color: white;
+}
+
+
+div.model
+{
+  height: 200px;
+  width: 200px;
+  border: 2x solid black;
+  background-color: white;
+
+}
+
+div.model img
+{
+  height: 200px;
+  width: 200px;
+}
+
+a{
+  
+  color: white;
+}
+
+
+
+
+
