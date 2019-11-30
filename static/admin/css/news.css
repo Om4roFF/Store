@@ -11,6 +11,8 @@ div.body
 
 div.for-news
 {
+    display: flex;
+    justify-content: space-around;
     padding-top:50px;
     height: 900px;
     width: 100%;
