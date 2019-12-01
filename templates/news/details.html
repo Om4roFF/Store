@@ -3,11 +3,12 @@
 {% block title %}{{ article.article_title }}{% endblock %}
 {% block head %}
     {% load staticfiles %}
+    <script>window.CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/';</script>
     <link rel="stylesheet" href="{% static 'admin/css/news.css' %}">
 {% endblock %}
 {% block news %}
      {% if article.article_img %}
-        <img id="img__news" src="{{ article.article_img.url }}" width="200px" height="200px">
+        <img id="img__news" src="{{ article.article_img }}" width="200px" height="200px">
      {% endif %}
     <div class="new-1-detail">
     <h2>{{ article.article_title }}</h2>

@@ -5,7 +5,7 @@ from django.urls import reverse
 import requests
 from bs4 import BeautifulSoup as BS
 def index(request):
-    latest_articles_list=Article.objects.order_by('-pub_date')[:20]
+    latest_articles_list=Article.objects.order_by('-pub_date')[:7]
     return render(request,'news/posts.html',{'latest_articles_list':latest_articles_list})
 
 
