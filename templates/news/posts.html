@@ -4,6 +4,7 @@
 {% block head %}
     {% load staticfiles %}
     <link rel="stylesheet" href="{% static 'admin/css/news.css' %}">
+    <script>window.CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/';</script>
 {% endblock %}
 {% block news %}
     <div class="for-news">
@@ -13,12 +14,13 @@
                     <div class="new-1">
                     <h4>{{i.article_title}}</h4>
                     {% if i.article_img %}
-                        <img src="{{ i.article_img.url }}" width="80px" height="40px">
+                        <img src="{{ i.article_img }}" width="80px" height="40px">
                     {% endif %}
                 <p>
                     {{i.pub_date}}
                     <br>
                     {{ i.article_short_content }}
+                    <br>
                     <a href="{% url 'newsApp:detail' i.id %}" class="a-new">
                         Читать подробнее...
                     </a>

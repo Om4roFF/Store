@@ -41,9 +41,14 @@ INSTALLED_APPS = [
     'news',
     'contacts',
     'testdrive',
+<<<<<<< HEAD
     'ckeditor',
     'ckeditor_uploader',
 
+=======
+    'ckeditor_uploader',
+    'ckeditor',
+>>>>>>> 89d28b854315c1662f14f6b3df03e785b112b9d6
 ]
 
 MIDDLEWARE = [
@@ -132,8 +137,13 @@ STATICFILES_DIRS = (
   os.path.join(BASE_DIR, 'static'),
 )
 
+<<<<<<< HEAD
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+=======
+MEDIA_URL='/media/'
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+>>>>>>> 89d28b854315c1662f14f6b3df03e785b112b9d6
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_FILENAME_GENERATOR = 'utils.get_filename'
