@@ -6,12 +6,9 @@
 {% block news %}
     <div class="map">
         <div class="map1">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2906.7786904652303!2d76.90
-            76955154458!3d43.23509947913784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3883692f02
-            7581ad%3A0x2426740f56437e63!2z0JzQtdC20LTRg9C90LDRgNC-0LTQvdGL0Lkg0YPQvdC40LLQtdGA0YHQuNGC0LXR
-            giDQuNC90YTQvtGA0LzQsNGG0LjQvtC90L3Ri9GFINGC0LXRhdC90L7Qu9C-0LPQuNC5!5e0!3m2!1sru!2skz!4v1573
-            76172925!5m2!1sru!2skz" width="800" height="450" frameborder="0" style="border:0;"
-            allowfullscreen=""></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d22919.381879699926!2d76.91167841235458!3d43.
+            238970940425446!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x2426740f56437e63!2z0JzQtdC20LTRg9C90LDRgNC-0LTQvdGL0Lkg0YPQvdC40LLQtdGA0YHQuNGC0LXRgiDQuNC90YTQvtGA0LzQsNGG0LjQvtC90L3Ri9GFINGC0LXRhdC90L7Qu9C-0LPQuNC5!5e0!3m2!1sru!2skz!4v1575264796283!5m2!1sru!2skz"
+                    width="800" height="450" frameborder="0" style="border:4px;" allowfullscreen=""></iframe>
         </div>
     </div>
     <div class="form">
@@ -19,16 +16,16 @@
             <form action="{% url 'contacts:leave_feedback' %}" method="post">
                 {% csrf_token %}
                 <div class="names">
-                    <label>Firstname <input class="names" type="text" name="firstname"></label>
-                    <label>Lastname <input class="names" type="text" name="lastname"></label>
+                    <label>Firstname <input class="form-control" type="text" name="firstname"></label>
+                    <label>Lastname <input class="form-control" type="text" name="lastname"></label>
                 </div>
                 <div class="contacts">
-                    <label>Email <input class="contacts" type="text" name="email"></label>
-                    <label>Phone <input class="contacts" type="number" name="contacts"></label>
+                    <label>Email <input class="form-control" type="text" name="email"></label>
+                    <label>Phone <input class="form-control" type="number" name="contacts"></label>
                 </div>
                 <div class="comments">
                     <p style="color: black">Comment</p>
-                    <textarea name="text"></textarea>
+                    <textarea name="text" OnKeyUp="ResizeTextArea(this,2);" class="form-control" cols="20" rows="2"></textarea>
                 </div>
 
                 <div class="submit">
@@ -37,5 +34,25 @@
             </form>
         </div>
     </div>
+    <script type="text/javascript">
+// функция подсчета количества строк
+    function countLines(strtocount, cols) {
+	var hard_lines = 1;
+	var last = 0;
+	while ( true ) {
+		last = strtocount.indexOf("\n", last+1);
+		hard_lines ++;
+		/* if ( hard_lines == 35) break; */
+		if ( last == -1 ) break;
+		}
+	var soft_lines = Math.ceil(strtocount.length / (cols-1));
+	var hard = eval("hard_lines " + unescape("%3e") + "soft_lines;");
+	if ( hard ) soft_lines = hard_lines;
+	return soft_lines;
+    }
+    function ResizeTextArea(the_form,min_rows) {
+        the_form.rows = Math.max(min_rows,countLines(the_form.value,the_form.cols) +1);
+    }
+    </Script>
 {% endblock %}
                     

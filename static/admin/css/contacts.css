@@ -35,18 +35,24 @@ div.form1
     width: 800px;
     height: 150px;
     display: flex;
-    background-color: #F3EDEC;
+    background-color: #FAFAD2;
     padding: 10px;
     justify-content: space-between;
     
 }
+/*div.form2*/
+/*{*/
+/*    */
+/*
+
+/*}*/
 
 form
 {
     width: 800px;
     height: 150px;
     display: flex;
-    background-color: #F3EDEC;
+    background-color: #FAFAD2;
     padding: 10px;
     justify-content: space-between;
 }

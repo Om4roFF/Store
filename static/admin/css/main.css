@@ -1,0 +1,83 @@
+.mrg
+{
+    padding-top: 100px;
+    padding-bottom: 40px;
+}
+
+div.cars
+{
+    background-color: white;
+    width: 55%;
+    display: inline-block;
+    margin-left: 120px;
+}
+
+div.сar_
+{
+    background-color: white;
+    margin-top: 7px;
+}
+div.section_
+{
+    float: right;
+    background-color: white;
+    width: 30%;
+    margin-right: 40px;
+    display: inline-block;
+}
+img{
+    float: left;
+    margin-left: 20px;
+    height: 100%;
+    width: 250px;
+}
+
+div.personal_car
+{
+    padding-bottom: 100px;
+    border-bottom: 2px outset red;
+
+}
+
+.personal_car_info
+{
+
+}
+
+
+.forButton
+{
+    margin-left: 550px;
+    margin-top: 20px;
+}
+
+.search_car
+{
+    margin-top: 200px;
+}
+
+
+.shift
+{
+    color: black;
+}
+
+.dan
+{
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.caaar
+{
+    margin-top: 100px;
+}
+
+h1
+{
+    color: black;
+}
+
+em{
+    color: black;
+}

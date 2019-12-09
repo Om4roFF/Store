@@ -4,177 +4,228 @@
     {% load staticfiles %}
     <link rel="stylesheet" href="{% static 'admin/css/slide.css' %}">
     <link rel="stylesheet" href="{% static 'admin/css/body1.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="//kolesa.kz/static/frontend/css/main-common.c9bc8b6ebb.css" />
     <script src="{% static 'admin/js/script.js' %}"></script>
 {% endblock %}
-{% block body %}
-    <body>
-        <header>
-            <nav>
-                <div class="logo">
-                   
+{% block news %}
+    <div class="menu-container container mrg">
+        <div class="header-menu-list ">
+            <form method="post" action="{% url 'cars:search' %}">
+                {% csrf_token %}
+                <select class="custom-select" name="body_car">
+                    <option value="none1" disabled selected style="display:none;">Кузов</option>
+                    <option value="седан">седан</option>
+                    <option value="купе">купе</option>
+                    <option value="кроссовер">кроссовер</option>
+                    <option value="хэтчбек">хэтчбек</option>
+                    <option value="внедорожник">внедорожник</option>
+                    <option value="лифтбэк">лифтбэк</option>
+                    <option value="лимузин">лимузин</option>
+                </select>
+                <select class="custom-select" name="unit" style="margin-top: 10px;">
+                    <option value="none1" disabled selected style="display:none;">Привод</option>
+                    <option value="полный">полный</option>
+                    <option value="задний">задний</option>
+                    <option value="передний">передний</option>
+                </select>
+                <select class="custom-select dan" name="fuel">
+                    <option value="none1" disabled selected style="display:none;">Топливо</option>
+                    <option value="бензин">бензин</option>
+                    <option value="дизель">дизель</option>
+                    <option value="электричество">электричество</option>
+                    <option value="газ">газ</option>
+                </select>
+
+                <div class="button forButton">
+                    <input type="submit" class="btn btn-info" placeholder="Искать" value="Искать">
                 </div>
-                <ul class="main-nav">
-                    <li><a href="/" class="nav-li">Cars</a></li>
-                    <li><a href="/news" class="nav-li">News</a></li>
-                    <li><a href="/testdrive" class="nav-li">Test-drives</a></li>
-                    <li><a href="/contacts"  class="nav-li">Contacts</a></li>
-                </ul>
-                
-            </nav>
-        </header>
-        <div class="body">
-            <h2>Марки машин</h2>
-            <div class="ul-types">
-                <ul class="cars-types">
-                    <li><h4><a href="#bmw">BMW</a></h4></li>
-                    <li><h4><a href="#merc">Mercedes-Benz</a></h4></li>
-                    <li><h4><a href="#tesla">Tesla</a></h4></li>
-                    <li><h4><a href="#toyta">Toyota</a></h4></li>
-                    <li><h4><a href="#lexus">Lexus</a></h4></li>
-                </ul>
-            </div>
-
-
-           
-           
-            
-            <div class="slideshow-container">
-            
-            <div class="mySlides fade">
-              
-              <img src="{% static 'admin/img/bgTD.jpg' %}" style="width:100%">
-              
-            </div>
-            
-            <div class="mySlides fade">
-              
-              <img src="{% static 'admin/img/merc.jpg' %}" style="width:100%">
-              
-            </div>
-            
-            <div class="mySlides fade">
-              
-              <img src="{% static 'admin/img/tesla.jpg' %}" style="width:100%">
-              
-            </div>
-
-            <div class="mySlides fade">
-                
-                <img src="{% static 'admin/img/toyta.jpg' %}" style="width:100%">
-               
-            </div>
-
-            <div class="mySlides fade">
-                
-                <img src="{% static 'admin/img/lexus.jpg' %}" style="width:100%">
-                
-              </div>
-
-             
-            </div>
-
-            <br>
-            
-            <div style="text-align:center">
-              <span class="dot"></span> 
-              <span class="dot"></span> 
-              <span class="dot"></span>
-              <span class="dot"></span> 
-              <span class="dot"></span>
-            </div>
-        
+            </form>
         </div>
-        <script>
-            var slideIndex = 0;
-            showSlides();
+    </div>
+    <div class="cars">
+        <div class="car_">
+            {% if cars_list %}
+                {% for cars in cars_list %}
+                    <div class="personal_car">
+                        <a href="{% url 'cars:car' cars.id %}">
+                            {% if cars.images %}
+                                <img src="{{ cars.img_title.url }}">
+                            {% endif %}
+                            <div class="shift">
+                                <h1>
+                                    {{ cars.mark }} {{ cars.model }}
+                                </h1>
+                                <em class="personal_car_info">
+                                    {{ cars.short_content }}
+                                </em>
+                            </div>
 
-            function plusSlides(n) {
-                 showSlides(slideIndex += n);
+                        </a>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="section_">
+        <canvas id="myCanvas" width="350" height="500"></canvas>
+    </div>
+<script>
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+    var ballRadius = 10;
+    var x = canvas.width/2;
+    var y = canvas.height-30;
+    var dx = 2;
+    var dy = -2;
+    var paddleHeight = 10;
+    var paddleWidth = 75;
+    var paddleX = (canvas.width-paddleWidth)/2;
+    var rightPressed = false;
+    var leftPressed = false;
+    var brickRowCount = 5;
+    var brickColumnCount = 9;
+    var brickWidth = 75;
+    var brickHeight = 20;
+    var brickPadding = 10;
+    var brickOffsetTop = 30;
+    var brickOffsetLeft = 30;
+    var score = 0;
+    var lives = 3;
+    var bricks = [];
+    for(var c=0; c<brickColumnCount; c++) {
+        bricks[c] = [];
+        for(var r=0; r<brickRowCount; r++) {
+            bricks[c][r] = { x: 0, y: 0, status: 1 };
+        }
+    }
+    document.addEventListener("keydown", keyDownHandler, false);
+    document.addEventListener("keyup", keyUpHandler, false);
+    document.addEventListener("mousemove", mouseMoveHandler, false);
+    function keyDownHandler(e) {
+        if(e.keyCode == 39) {
+            rightPressed = true;
+        }
+        else if(e.keyCode == 37) {
+            leftPressed = true;
+        }
+    }
+    function keyUpHandler(e) {
+        if(e.keyCode == 39) {
+            rightPressed = false;
+        }
+        else if(e.keyCode == 37) {
+            leftPressed = false;
+        }
+    }
+    function mouseMoveHandler(e) {
+        var relativeX = e.clientX - canvas.offsetLeft;
+        if(relativeX > 0 && relativeX < canvas.width) {
+            paddleX = relativeX - paddleWidth/2;
+        }
+    }
+    function collisionDetection() {
+        for(var c=0; c<brickColumnCount; c++) {
+            for(var r=0; r<brickRowCount; r++) {
+                var b = bricks[c][r];
+                if(b.status == 1) {
+                    if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
+                        dy = -dy;
+                        b.status = 0;
+                        score++;
+                        if(score == brickRowCount*brickColumnCount) {
+                            {#alert("YOU WIN, CONGRATS!");#}
+                            document.location.reload();
+                        }
+                    }
+                }
             }
-
-            function currentSlide(n) {
-                 showSlides(slideIndex = n);
+        }
+    }
+    function drawBall() {
+        ctx.beginPath();
+        ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+        ctx.fillStyle = "#0095DD";
+        ctx.fill();
+        ctx.closePath();
+    }
+    function drawPaddle() {
+        ctx.beginPath();
+        ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
+        ctx.fillStyle = "#0095DD";
+        ctx.fill();
+        ctx.closePath();
+    }
+    function drawBricks() {
+        for(var c=0; c<brickColumnCount; c++) {
+            for(var r=0; r<brickRowCount; r++) {
+                if(bricks[c][r].status == 1) {
+                    var brickX = (r*(brickWidth+brickPadding))+brickOffsetLeft;
+                    var brickY = (c*(brickHeight+brickPadding))+brickOffsetTop;
+                    bricks[c][r].x = brickX;
+                    bricks[c][r].y = brickY;
+                    ctx.beginPath();
+                    ctx.rect(brickX, brickY, brickWidth, brickHeight);
+                    ctx.fillStyle = "#0095DD";
+                    ctx.fill();
+                    ctx.closePath();
+                }
             }
-            
-            function showSlides() {
-              var i;
-              var slides = document.getElementsByClassName("mySlides");
-              var dots = document.getElementsByClassName("dot");
-              for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
-              }
-              slideIndex++;
-              if (slideIndex > slides.length) {slideIndex = 1}    
-              for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-              }
-              slides[slideIndex-1].style.display = "block";  
-              dots[slideIndex-1].className += " active";
-              setTimeout(showSlides, 1500); // Change image every 2 seconds
+        }
+    }
+    function drawScore() {
+        ctx.font = "16px Arial";
+        ctx.fillStyle = "#0095DD";
+        ctx.fillText("Score: "+score, 8, 20);
+    }
+    function drawLives() {
+        ctx.font = "16px Arial";
+        ctx.fillStyle = "#0095DD";
+        ctx.fillText("Lives: "+lives, canvas.width-65, 20);
+    }
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawBricks();
+        drawBall();
+        drawPaddle();
+        drawScore();
+        drawLives();
+        collisionDetection();
+        if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
+            dx = -dx;
+        }
+        if(y + dy < ballRadius) {
+            dy = -dy;
+        }
+        else if(y + dy > canvas.height-ballRadius) {
+            if(x > paddleX && x < paddleX + paddleWidth) {
+                dy = -dy;
             }
-            </script>
-        <div class="bmw">
-            <a name="bmw"></a>
-            <div class="forModels">
-                <div class="model">
-                    <img src="{% static 'admin/img/bmwBag.jpg' %}">
-                    <p>Описание к машине</p>
-                    <a href="#">Записаться на тест драйв</a>
-                </div>
-            </div>
-        </div>
-        <div class="merc">
-            <a name="merc"></a>
-            <div class="forModels">
-                <div class="model">
-                    <img src="{% static 'admin/img/mercBag.jpg' %}">
-                    <p>Описание к машине</p>
-                    <a href="#">Записаться на тест драйв</a>
-                </div>
-
-            </div>
-        </div>
-        <div class="tesla">
-            <a name="tesla"></a>
-            <div class="forModels">
-                <div class="model">
-                    <img src="mercBag.jpg">
-                    <p>Описание к машине</p>
-                    <a href="#">Записаться на тест драйв</a>
-                </div>
-
-            </div>
-        </div>
-        <div class="toyota">
-            <a name="toyta"></a>
-            <div class="forModels">
-                <div class="model">
-                    <img src="mercBag.jpg">
-                    <p>Описание к машине</p>
-                    <a href="#">Записаться на тест драйв</a>
-                </div>
-
-            </div>
-        </div>
-        <div class="lexus">
-            <a name="lexus"></a>
-            <div class="forModels">
-                <div class="model">
-                    <img src="mercBag.jpg">
-                    <p>Описание к машине</p>
-                    <a href="#">Записаться на тест драйв</a>
-                </div>
-
-            </div> 
-        </div>
-        <footer>
-            <div class="nav-foot">
-                <ul class="nav-foot-ul">
-                    <li><a class="footer-a" href="#">About us</a></li>
-                    <li><a class="footer-a" href="#">Our partners</a></li>
-                    <li><a class="footer-a" href="#">Locations</a></li> 
-                </ul>
-            </div>
-        </footer>
-    </body>
+            else {
+                lives--;
+                if(!lives) {
+                    {#alert("GAME OVER");#}
+                    document.location.reload();
+                }
+                else {
+                    x = canvas.width/2;
+                    y = canvas.height-30;
+                    dx = 3;
+                    dy = -3;
+                    paddleX = (canvas.width-paddleWidth)/2;
+                }
+            }
+        }
+        if(rightPressed && paddleX < canvas.width-paddleWidth) {
+            paddleX += 20;
+        }
+        else if(leftPressed && paddleX > 0) {
+            paddleX -= 20;
+        }
+        x += dx;
+        y += dy;
+        requestAnimationFrame(draw);
+    }
+    draw();
+</script>
 {% endblock %}

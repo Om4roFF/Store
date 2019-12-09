@@ -11,11 +11,10 @@ div.body
 
 div.for-news
 {
-    display: flex;
-    justify-content: space-around;
-    padding-top:50px;
-    height: 900px;
-    width: 100%;
+    margin-top: 70px;
+    margin-left: 60px;
+    margin-right: 60px;
+
 }
 
 p{
@@ -32,10 +31,12 @@ a.a-new
 div.new-1
 {
     background-color: white;
-    height: 150px;
-    width: 50%;
+    height: 140px;
+    width: 100%;
     text-align: center;
-    margin-top: 40px;
+    margin-top: 7px;
+    border: 0.5px solid;
+    border-radius: 25px;
 }
 
 
@@ -56,14 +57,21 @@ img.news-img-1
 div.new-1-detail
 {
     background-color: white;
-    margin-bottom: 200px;
-    position:absolute;
-    top: 500px;
+    margin-bottom: 100px;
+    padding-bottom: 30px;
+    position:static;
+    top: 100px;
     width: 80%;
     text-align: center;
+    margin-left: 10%;
 }
 .com{
     position: relative;
     margin-top: 800px;
     padding: 50px;
+}
+.img___{
+    float: left;
+    margin-left: 30px;
+    padding-bottom: 10px;
 }

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import smtplib
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -41,14 +42,8 @@ INSTALLED_APPS = [
     'news',
     'contacts',
     'testdrive',
-<<<<<<< HEAD
     'ckeditor',
     'ckeditor_uploader',
-
-=======
-    'ckeditor_uploader',
-    'ckeditor',
->>>>>>> 89d28b854315c1662f14f6b3df03e785b112b9d6
 ]
 
 MIDDLEWARE = [
@@ -137,13 +132,18 @@ STATICFILES_DIRS = (
   os.path.join(BASE_DIR, 'static'),
 )
 
-<<<<<<< HEAD
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
-=======
-MEDIA_URL='/media/'
-MEDIA_ROOT=os.path.join(BASE_DIR,'media')
->>>>>>> 89d28b854315c1662f14f6b3df03e785b112b9d6
+
+
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_FILENAME_GENERATOR = 'utils.get_filename'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'bolatomarov2000@gmail.com'
+EMAIL_HOST_PASSWORD = '77072246355b'

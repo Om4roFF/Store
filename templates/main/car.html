@@ -1,0 +1,78 @@
+{% extends 'mainPage.html' %}
+{% block title %}Cars{% endblock %}
+{% block head %}
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'admin/css/slide.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/css/car.css' %}">
+    <script src="{% static 'admin/js/script.js' %}"></script>
+{% endblock %}
+{% block news %}
+    <div class="carcas">
+        <div>
+            <div class="slideshow-container">
+                {% if car %}
+                        {% for i in images %}
+                            <div class="mySlides fade">
+                                <img src="{{ i.image.url }}" style="width:100%">
+                            </div>
+                        {% endfor %}
+                {% endif %}
+            </div>
+            <br>
+            <div style="text-align:center">
+                {% for i in images %}
+                    <span class="dot"></span>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="car_info">
+            <h1>{{ car.mark }}  {{ car.model }}</h1>
+            <p>
+                {{ car.content }}
+            </p>
+            <h2 style="text-align: center">Характеристики</h2>
+            <p>
+                Привод : {{ car.drive_unit }}
+            </p>
+            <p>
+                Кузов : {{ car.body }}
+            </p>
+            <p>Объем двигателя : {{ car.engine_volume}}</p>
+            <p>Разгон до 100 км/ч : {{ car.acceleration}}</p>
+            <p>Мощность : {{ car.power}}</p>
+            <p>Топливо : {{ car.fuel}}</p>
+            <em style="float: right">{{ car.price }}</em>
+        </div>
+    </div>
+
+
+        <script>
+            var slideIndex = 0;
+            showSlides();
+
+            function plusSlides(n) {
+                 showSlides(slideIndex += n);
+            }
+
+            function currentSlide(n) {
+                 showSlides(slideIndex = n);
+            }
+
+            function showSlides() {
+              var i;
+              var slides = document.getElementsByClassName("mySlides");
+              var dots = document.getElementsByClassName("dot");
+              for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+              }
+              slideIndex++;
+              if (slideIndex > slides.length) {slideIndex = 1}
+              for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+              }
+              slides[slideIndex-1].style.display = "block";
+              dots[slideIndex-1].className += " active";
+              setTimeout(showSlides,1500); // Change image every 2 seconds
+            }
+        </script>
+{% endblock %}

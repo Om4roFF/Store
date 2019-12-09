@@ -1,12 +1,11 @@
 div.body
 {
-    height: 800px;
+    height: 100%;
     width: 100%;
     background-image: url("/static/admin/img/bg.jpg");
     background-size: cover;
-   
+    background-repeat: no-repeat;
     background-position: 100% 100%;
-    
 }
 
 div.bmw

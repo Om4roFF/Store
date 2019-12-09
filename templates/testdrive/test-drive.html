@@ -1,53 +1,105 @@
 {% extends 'mainPage.html' %}
-{% block title %}Тест драйв{% endblock %}
+
+{% block title %}Новости{% endblock %}
 {% block head %}
     {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'admin/css/news.css' %}">
     <link rel="stylesheet" href="{% static 'admin/css/test-drive.css' %}">
+    <script>window.CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/';</script>
 {% endblock %}
-
 {% block news %}
-            <div class="map">
-               <div class="car-row">
-                
-            </div>
-           </div>
-           <div class="form">
-                <div class="form1 form2">
-                    <h3>Запись на тест-драйв</h3>
-                    <div class="form-group">
-                        <div class="col-sm-12 text-right">
-                            <small>
-                                Поля, отмеченные знаком *, обязательны для заполнения
-                            </small>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-12">
-                            <div class="header">
-                                <h4>Персональные данные</h4>
-                            </div>
-                        </div>
-                    </div>
-{#                    <div class="names">#}
-{#                        <label>Firstname <input class="names" type="text" name="firsname"></label>#}
-{#                        <label>Lastname <input class="names" type="text" name="firsname"></label>#}
-{#                    </div>#}
-{#                    #}
-{#                    <div class="contacts">#}
-{#                        <label>Email <input class="contacts" type="text" name="firsname"></label>#}
-{#                        <label>Phone <input class="contacts" type="number" name="firsname"></label>#}
-{#                    </div>#}
-{#                   #}
-{#                    #}
-{#                    <div class="names">#}
-{#                        <label>Date<input class="contacts" type="date"></label>#}
-{#                    </div>#}
-{##}
-{#                    <div class="submit">#}
-{#                        <input class="submit btn-danger" type="submit">#}
-{#                    </div>#}
-                    
-
+    <div class="form" name="forma">
+                <div>
+                    <h3><p style="margin-left:30px;margin-top: 10px;">Запись на тест-драйв</p></h3>
                 </div>
-           </div>
+                <div class="text-right">
+                    <small>Поля, отмеченные знаком *, обязательны для заполнения</small>
+                </div>
+                <br>
+                <form action="{% url 'test-drive:add_test-drive' %}" method="post">
+                    {% csrf_token %}
+                    <div>
+                        <div>
+                            <h4>Персональные данные</h4>
+                        </div>
+                        <div class="personal-data1">
+                            <h5 style="margin-left:50px;">Обращение*</h5>
+                            <label ><input type="radio"  value="male" name="male" checked> Господин</label>
+                            <label ><input type="radio" value="female" name="male"> Госпожа</label>
+                        </div>
+                        <div class="personal-data2">
+                                <h5 style="margin-left:100px;">Ф.И.О.*</h5>
+                                <label><input class="personal-data form-control" name="surname" placeholder="Фамилия*" type="text" required></label>
+                                <label><input class="personal-data form-control"  name="name" placeholder="Имя*" type="text" required></label>
+                                <label><input class="personal-data form-control"  name="patronymic" placeholder="Отчество" type="text"></label>
+                        </div>
+                        <div class="personal-data3">
+                                <h5 style="margin-left: 20px;">Способы связи*</h5>
+                                <label><input class="personal-data form-control" name="phone" placeholder="Телефон*" required></label>
+                                <label><input type="email" class="personal-data form-control" name="email" placeholder="Email" required></label>
+                        </div>
+                    </div>
+                    <br>
+                    <div>
+                        <div>
+                            <h4>Запись на тест-драйв</h4>
+                        </div>
+                        <br>
+                        <div class="test-drive1">
+                            <h5 style="margin-left: 50px;">Выбор модели*</h5>
+                            <label>
+                                <select name="model" class="custom-select mb-3" required>
+                                    <option value="" disabled selected style="display:none;">Выберите модель</option>
+                                    <optgroup label="BMW">
+                                            <option value="x5">X5</option>
+                                            <option value="m6">M6</option>
+                                        <option value="i8">i8</option>
+                                    </optgroup>
+                                    <optgroup label="Mercedes-Benz">
+                                        <option value="S500">S 500</option>
+                                        <option value="E550">E 550</option>
+                                        <option value="G63AMG">G 63 AMG</option>
+                                    </optgroup>
+                                    <optgroup label="Tesla">
+                                        <option value="ModelS">Model S</option>
+                                        <option value="ModelX">Model X</option>
+                                        <option value="Model3">Model 3</option>
+                                    </optgroup>
+                                    <optgroup label="Toyota">
+                                        <option value="Camry">Camry</option>
+                                        <option value="LandCruiser">Land Cruiser</option>
+                                        <option value="Corolla">Corolla</option>
+                                    </optgroup>
+                                    <optgroup label="Lexus">
+                                        <option value="RX330">RX 330</option>
+                                        <option value="LX570">LX 570</option>
+                                        <option value="GS300">GS 300</option>
+                                    </optgroup>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                    <br>
+                    <div>
+                        <div>
+                            <h4>Информация о защите персональных данных</h4>
+                        </div>
+                        <br>
+                        <div class="protect-data">
+                            <h5 style="margin-left: 45px;">Отметка о согласии*</h5>
+                            <label class="protect" style="text-align: center;">
+                                <input type="checkbox" class="" required>Я внимательно ознакомился и соглашаюсь с условиями обработки
+                                моих персональных данных, а также я подтверждаю наличие согласия субъектов иных указанных
+                                мной персональных данных с условиями их обработки.
+                            </label>
+                        </div>
+                    </div>
+                    <div class="submit-btn">
+                        <input class="submit btn btn-secondary" type="submit">
+                    <script>alert(Спасибо)</script>
+                    </div>
+                </form>
+        </div>
+
 {% endblock %}
+

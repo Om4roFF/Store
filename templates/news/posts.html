@@ -12,19 +12,19 @@
             {% if latest_articles_list %}
                 {% for i in latest_articles_list %}
                     <div class="new-1">
-                    <h4>{{i.article_title}}</h4>
-                    {% if i.article_img %}
-                        <img src="{{ i.article_img }}" width="80px" height="40px">
-                    {% endif %}
-                <p>
-                    {{i.pub_date}}
-                    <br>
-                    {{ i.article_short_content }}
-                    <br>
-                    <a href="{% url 'newsApp:detail' i.id %}" class="a-new">
-                        Читать подробнее...
-                    </a>
-                </p>
+                        <h3>{{i.article_title}}</h3>
+                        {% if i.article_img %}
+                            <img class="img___" src="{{ i.article_img }}" width="150px" height="100px">
+                        {% endif %}
+                        <p>
+                            {{i.pub_date}}
+                            <br>
+                            {{ i.article_short_content }}
+                            <br>
+                            <a href="{% url 'newsApp:detail' i.id %}" class="a-new">
+                                <strong>Читать подробнее...</strong>
+                            </a>
+                        </p>
                     </div>
                 {% endfor %}
             {% else %}

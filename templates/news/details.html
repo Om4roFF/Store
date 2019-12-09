@@ -3,42 +3,67 @@
 {% block title %}{{ article.article_title }}{% endblock %}
 {% block head %}
     {% load staticfiles %}
-    <script>window.CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/';</script>
     <link rel="stylesheet" href="{% static 'admin/css/news.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/css/details.css' %}">
 {% endblock %}
 {% block news %}
      {% if article.article_img %}
-        <img id="img__news" src="{{ article.article_img }}" width="200px" height="200px">
+        <img id="img__news"  src="{{ article.article_img }}" width="200px" height="200px">
      {% endif %}
-    <div class="new-1-detail">
-    <h2>{{ article.article_title }}</h2>
-    <div class="news_info">
-        <p>{{ article.article_content }}</p>
+    <div class="new-1-detail ang">
+        <h2>{{ article.article_title }}</h2>
+        <div class="">
+            <p>{{ article.article_content }}</p>
+        </div>
+            <em class="">{{ article.pub_date }}</em>
     </div>
-        <em id="news_pub_date">{{ article.pub_date }}</em>
-    </div>
-    <div class="com">
-        <div class="comments form-group">
+
+    <div class="comments__">
+        <div class="">
 
             <form action="{% url 'newsApp:leave_comment' article.id %}" method="post">
                 {% csrf_token %}
 
                 <input type="text" required="" class="form-control" placeholder="Ваше имя" name="name"><br>
-                <textarea name="text" class="form-control" required="" placeholder="Текст комментария" cols="30" rows="10"></textarea><br>
+                <textarea name="text" class="form-control" required="" placeholder="Текст комментария" cols="5" rows="3"></textarea><br>
 
-                <button type="submit" class="btn btn-info">Оставить комментарий</button>
+                <button type="submit" class="btn btn-info" >Оставить комментарий</button>
             </form>
 
         </div>
-        <h5>
-            {% if latest_comment_list %}
-                {% for c in latest_comment_list %}
-                <p>
-                    <strong>{{ c.author_name }}</strong>
-                    <p>{{ c.comment_text }}</p>
-                </p>
-                {% endfor %}
-            {% endif %}
-        </h5>
     </div>
+    <h3 class="title-comments">Комментарии</h3>
+    {% if latest_comment_list %}
+            {% for c in latest_comment_list %}
+    <div class="">
+    <div class="comments ">
+        <ul class="media-list underline">
+            <!-- Комментарий (уровень 1) -->
+            <li class="media">
+                <div class="media-body border p-3">
+                    {% if c.author_name and c.comment_text %}
+                    <div class="media-heading">
+
+                        <div class="author"><h3><i>{{ c.author_name }}</i></h3></div>
+
+                    </div>
+
+                    <div class="media-text text-justify">{{ c.comment_text }}
+                    </div>
+                    {% else %}
+                        <footer style="margin-top: 500px"></footer>
+                    {% endif %}
+                </div>
+            </li>
+            <!-- Конец комментария (уровень 1) -->
+        </ul>
+    </div>
+    {% endfor %}
+    {% endif %}
+    </div>
+    <script>
+        var d = new Date();
+        var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        document.getElementById("demo").innerHTML = d.getDate()+' '+months[d.getMonth()]+','+d.getFullYear();
+    </script>
 {% endblock %}

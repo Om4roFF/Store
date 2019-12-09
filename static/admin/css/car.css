@@ -1,0 +1,23 @@
+div.carcas
+{
+    background-color: #ffffff;
+    margin-top: 80px;
+    margin-left: 8%;
+    height: 100%;
+    width: 80%;
+
+    border: 1px solid black;
+    border-radius: 1%;
+}
+
+
+div.car_info
+{
+    height: 50%;
+    width: 70%;
+    margin-left: 190px;
+    padding: 30px;
+}
+p{
+    color: black;
+}
