@@ -1,4 +1,4 @@
-# Store
+# Django_Store
 Car store written on the django framework for educational purposes.
 car dealership selling a large number of cars.
 
